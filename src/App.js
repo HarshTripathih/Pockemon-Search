@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import './App.css';
-import PropTypes from 'prop-types';
-import pockemon from './pockemon.json';
+import './App.css'
+import pokemon from './pokemon.json'
+import PropTypes from 'prop-types'
+
+
 
 
 const PokemonType = PropTypes.shape({
@@ -25,13 +27,15 @@ const PokemonType = PropTypes.shape({
 
 })
 
-const PokemonRow = ({ pockemon}) => {
+const PokemonRow = ({ pokemon, getSelectedPokemon }) => {
+
+
   return (
 
     <tr>
-      <td>{pockemon.name.english}</td>
-      <td>{pockemon.type.join(", ")}</td>
-      <td><button>More Information</button></td>
+      <td>{pokemon.name.english}</td>
+      <td>{pokemon.type.join(", ")}</td>
+      <td><button onClick={() => getSelectedPokemon(pokemon)} >More Information</button></td>
     </tr>
 
 
@@ -39,15 +43,28 @@ const PokemonRow = ({ pockemon}) => {
 }
 
 PokemonRow.propTypes = {
-  pockemon: PokemonType
+  pokemon: PokemonType
+}
+
+const PokemonInfo = (props) => {
+  console.log('props', props)
+  return (
+    <div>
+      <h1>Pokemon Info</h1>
+    </div>
+  )
 }
 
 
+
 function App() {
+
   //two rules of hooks
   //it should be on top level management
   //it should be inside react function
   const [filter, setFilter] = useState('')
+  const [selectedPokemon, setSelectedPokemon] = useState(null)
+  console.log('selectedPokemon', selectedPokemon)
 
   console.log(filter)
 
@@ -85,8 +102,13 @@ function App() {
 
             <tbody>
 
-              {pockemon.filter((pockemon) => pockemon.name.english.toLowerCase().includes(filter.toLowerCase())).slice(0, 20).map((pockemon) => (
-                <PokemonRow key={pockemon.id} pockemon={pockemon} />
+              {pokemon.filter((pokemon) => pokemon.name.english.toLowerCase().includes(filter.toLowerCase())).slice(0, 20).map((pokemon) => (
+                <PokemonRow
+                  key={pokemon.id}
+                  pokemon={pokemon}
+                  getSelectedPokemon={(pokemon) => { setSelectedPokemon(pokemon) }}
+
+                />
               )
               )}
               {/* {pokemon.filter(({ name: { english } }) => english.includes(filter)).slice(0, 20).map((pokemon) => (
@@ -97,11 +119,11 @@ function App() {
           </table>
         </div>
 
-
+        <PokemonInfo {...selectedPokemon} />
       </div>
 
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
