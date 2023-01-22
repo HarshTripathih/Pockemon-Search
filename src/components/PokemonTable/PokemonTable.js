@@ -33,11 +33,13 @@ function PokemonTable({ pokemon, filter, setSelectedPokemon }) {
         <table width="100%">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th style={{padding:'15px'}}>Name</th>
                     <th>Type</th>
+                    <th>More Info</th>
                 </tr>
             </thead>
             <tbody>
+               
                 {pokemon.filter((pokemon) => pokemon.name.english.toLowerCase().includes(filter.toLowerCase())).slice(0, 20).map((pokemon) => (
                     <PokemonRow
                         key={pokemon.id}

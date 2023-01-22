@@ -7,7 +7,7 @@ function PokemonSearch({ filter, setFilter }) {
         setFilter(event.target.value)
     }
     return (
-        <input
+        <input style={{borderRadius:'15px'}}
             type='text'
             value={filter}
             onChange={searchPokemon}

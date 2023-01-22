@@ -1,9 +1,10 @@
 import React from "react"
+import './PokemonInfo.css'
 
 const PokemonInfo = ({ name: { english }, base }) => {
     return (
-        <div>
-            <h1>{english}</h1>
+        <div className="pokemon_info_box">
+            <h1 style={{color:'red',textAlign:'center'}}>{english}</h1>
             <table>
                 <tbody>
                     {Object.keys(base).map((key) => (

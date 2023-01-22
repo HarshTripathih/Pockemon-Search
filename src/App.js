@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-// import pokemon from './pokemon.json'
+import pokemon from './pokemon.json'
 import PokemonInfo from './components/PokemonInfo/PokemonInfo'
 import PokemonSearch from './components/PokemonSearch/PokemonSearch'
 import PokemonTable from './components/PokemonTable/PokemonTable'
@@ -11,20 +11,21 @@ function App() {
 
   console.log('app rendered')
   const [filter, setFilter] = useState('')
-  const [pokemon, setPokemon] = useState([])
+
+  // const [pokemon, setPokemon] = useState([])
 
 
   // fetch("/my-app/pokemon.json")
 
-  useEffect(() => {
-    console.log('useeffect run')
-    //this will run when the component mounts and only once
-    fetch('pokemon.json')
-      .then(response => response.json())
-      .then(data => setPokemon(data))
-      .catch(function (error) { console.log(error) })
+  // useEffect(() => {
+  //   console.log('useeffect run')
+  //   //this will run when the component mounts and only once
+  //   fetch('pokemon.json')
+  //     .then(response => response.json())
+  //     .then(data => setPokemon(data))
+  //     .catch(function (error) { console.log(error) })
 
-  }, [])
+  // }, [])
 
 
 
@@ -58,6 +59,7 @@ function App() {
 
 
         {selectedPokemon && <PokemonInfo {...selectedPokemon} />}
+        
       </div>
 
     </div>

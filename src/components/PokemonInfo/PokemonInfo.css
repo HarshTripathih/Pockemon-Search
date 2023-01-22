@@ -1,0 +1,28 @@
+.pokemon_info_box{
+    background-color: aquamarine;
+    height:55vh;
+    width:150%;
+    margin-top: 50%;
+    margin-left: 30%;
+    border-radius: 10px;
+}
+
+table{
+    width: 100%;
+    font-size: 20px;
+    border-spacing:30px;
+    
+    
+}
+td{
+    text-align: center;
+    /* border-collapse: collapse; */
+    /* background-color: #04AA6D; */
+}
+/* tr:nth-child(even){background-color: #f2f2f2} */
+
+th {
+  background-color: #04AA6D;
+  color: white;
+  
+}
